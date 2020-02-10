@@ -3,7 +3,7 @@ using Xunit;
 
 namespace ProjectEulerTest
 {
-    public class ExerciseTest
+    public class ProblemTest
     {
         [Fact]
         public void SumAllNaturalNumbersMultiplesOfThreeAndFive_WhenBelowTen_SumShouldBe23()
@@ -11,7 +11,7 @@ namespace ProjectEulerTest
             var n = 10;
             var expectedSum = 23;
 
-            var actualSum = Exercise.SumAllNaturalNumbersMultiplesOfThreeAndFive(n);
+            var actualSum = Problem.SumAllNaturalNumbersMultiplesOfThreeAndFive(n);
 
             Assert.Equal(expectedSum, actualSum);
         }
@@ -22,7 +22,7 @@ namespace ProjectEulerTest
             var n = 1000;
             var expectedSum = 233168;
 
-            var actualSum = Exercise.SumAllNaturalNumbersMultiplesOfThreeAndFive(n);
+            var actualSum = Problem.SumAllNaturalNumbersMultiplesOfThreeAndFive(n);
 
             Assert.Equal(expectedSum, actualSum);
         }
@@ -33,7 +33,7 @@ namespace ProjectEulerTest
             var n = 10;
             var expectedSum = 44;
 
-            var actualSum = Exercise.SumEvenFibonacciNumbers(n);
+            var actualSum = Problem.SumEvenFibonacciNumbers(n);
 
             Assert.Equal(expectedSum, actualSum);
         }
@@ -47,7 +47,7 @@ namespace ProjectEulerTest
         {
             var expectedSum = 4613732;
 
-            var actualSum = Exercise.SumEvenFibonacciNumbers(order);
+            var actualSum = Problem.SumEvenFibonacciNumbers(order);
 
             Assert.Equal(expectedSum, actualSum);
         }
@@ -58,7 +58,7 @@ namespace ProjectEulerTest
             var number = 13195;
             var expectedPrimeFactor = 29;
 
-            var actualLargestPrimeFactor = Exercise.GetLargestPrimeFactorOf(number);
+            var actualLargestPrimeFactor = Problem.GetLargestPrimeFactorOf(number);
 
             Assert.Equal(expectedPrimeFactor, actualLargestPrimeFactor);
         }
@@ -69,7 +69,7 @@ namespace ProjectEulerTest
             var number = 600851475143;
             var expectedPrimeFactor = 6857;
 
-            var actualLargestPrimeFactor = Exercise.GetLargestPrimeFactorOf(number);
+            var actualLargestPrimeFactor = Problem.GetLargestPrimeFactorOf(number);
 
             Assert.Equal(expectedPrimeFactor, actualLargestPrimeFactor);
         }
@@ -79,7 +79,7 @@ namespace ProjectEulerTest
         {
             var expectedLargestPalindrome = 906609;
 
-            var actualLargestPalindrome = Exercise.GetLargestPalindromeProduct();
+            var actualLargestPalindrome = Problem.GetLargestPalindromeProduct();
 
             Assert.Equal(expectedLargestPalindrome, actualLargestPalindrome);
         }
@@ -90,7 +90,7 @@ namespace ProjectEulerTest
             var number = 10;
             var expectedSmallestPositiveNumber = 2520;
 
-            var actualSmallestPositiveNumber = Exercise.GetSmallestPositiveNumberEvenlyDivisibleBy(number);
+            var actualSmallestPositiveNumber = Problem.GetSmallestPositiveNumberEvenlyDivisibleBy(number);
 
             Assert.Equal(expectedSmallestPositiveNumber, actualSmallestPositiveNumber);
         }
@@ -101,9 +101,52 @@ namespace ProjectEulerTest
             var number = 20;
             var expectedSmallestPositiveNumber = 232792560;
 
-            var actualSmallestPositiveNumber = Exercise.GetSmallestPositiveNumberEvenlyDivisibleBy(number);
+            var actualSmallestPositiveNumber = Problem.GetSmallestPositiveNumberEvenlyDivisibleBy(number);
 
             Assert.Equal(expectedSmallestPositiveNumber, actualSmallestPositiveNumber);
+        }
+
+        [Fact]
+        public void SubtractSumSquareOf_WhenFirstTen_ShouldBe2640()
+        {
+            var number = 10;
+            var expectedDifference = 2640;
+
+            var actualDifference = Problem.SubtractSumSquareOf(number);
+
+            Assert.Equal(expectedDifference, actualDifference);
+        }
+
+        [Fact]
+        public void SubtractSumSquareOf_WhenFirstOneHundred_ShouldBe25164150()
+        {
+            var number = 100;
+            var expectedDifference = 25164150;
+
+            var actualDifference = Problem.SubtractSumSquareOf(number);
+
+            Assert.Equal(expectedDifference, actualDifference);
+        }
+
+        [Fact]
+        public void GetTopToysAmzn_WhenMostQuotedToysAreBetaAndDeltacellular_ShouldReturnBetaAndDeltacellular()
+        {
+            var toys = new System.Collections.Generic.List<string> { "anacell", "betacellular", "cetracular", "deltacellular", "eurocell" };
+            var quotes = new System.Collections.Generic.List<string>
+            {
+                "I love anacell Best services provided by anacell",
+                "betacellular has great service",
+                "deltacellular blablabla betacellular",
+                "cetracular blablabla eurocell",
+                "betacellular blabla deltacellular"
+            };
+            var topToys = 2;
+
+            var topQuotedToys = Problem.GetTopQuotedToysAmzn(toys, quotes, topToys);
+
+            Assert.Equal("betacellular", topQuotedToys[0]);
+            Assert.Equal("deltacellular", topQuotedToys[1]);
+            Assert.Equal(topToys, topQuotedToys.Count);
         }
     }
 }
